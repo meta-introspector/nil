@@ -1,106 +1,29 @@
-# Note: This flake contains only main packages.
-# For development environment, see `./dev/flake.nix`.
-rec {
-  description = "Language Server for Nix Expression Language";
+{
+  description = "A flake for this submodule, providing a basic development shell.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-    }:
-    let
-      inherit (builtins) substring;
-      inherit (nixpkgs) lib;
+  outputs = { self, nixpkgs, flake-utils, ... }@inputs:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = import nixpkgs { inherit system; };
+      in
+      {
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            bash
+            git
+            shellcheck # Add shellcheck for shell script linting
+            # Add any other common tools needed for your submodules here
+          ];
 
-      eachSystem = lib.genAttrs lib.systems.flakeExposed;
-
-      mtime = self.lastModifiedDate;
-      date = "${substring 0 4 mtime}-${substring 4 2 mtime}-${substring 6 2 mtime}";
-      rev = self.rev or (lib.warn "Git changes are not committed" (self.dirtyRev or "dirty"));
-
-      mkNil =
-        {
-          rustPlatform,
-          nixVersions,
-          nixfmt-rfc-style,
-          ...
-        }:
-        rustPlatform.buildRustPackage {
-          pname = "nil";
-          version = "unstable-${date}";
-          src = self;
-
-          cargoLock = {
-            lockFile = ./Cargo.lock;
-            allowBuiltinFetchGit = false;
-          };
-
-          nativeBuildInputs = [ (nixVersions.latest or nixVersions.unstable) ];
-
-          CFG_RELEASE = "git-${rev}";
-          CFG_DEFAULT_FORMATTER = lib.getExe nixfmt-rfc-style;
-
-          meta = {
-            inherit description;
-            homepage = "https://github.com/oxalica/nil";
-            license = with lib.licenses; [
-              mit
-              asl20
-            ];
-            mainProgram = "nil";
-          };
-        };
-
-      mkCocNil =
-        {
-          runCommand,
-          nodejs,
-          esbuild,
-        }:
-        runCommand "coc-nil-unstable-${date}"
-          {
-            nativeBuildInputs = [
-              nodejs
-              esbuild
-            ];
-            src = ./editors/coc-nil;
-          }
-          ''
-            cp -r --no-preserve=all $src ./source
-            cd source
-            npm run build --offline
-            mkdir -p $out
-            cp -rt $out lib package{,-lock}.json
+          shellHook = ''
+            echo "Welcome to the development shell of this submodule!"
           '';
-
-    in
-    {
-      packages = eachSystem (
-        system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        rec {
-          default = nil;
-          nil = pkgs.callPackage mkNil { };
-          coc-nil = pkgs.callPackage mkCocNil { };
-        }
-      );
-
-      overlays = {
-        default = lib.composeExtensions self.overlays.nil self.overlays.coc-nil;
-        nil = final: prev: {
-          nil = final.callPackage mkNil { };
         };
-        coc-nil = final: prev: {
-          vimPlugins = prev.vimPlugins or { } // {
-            coc-nil = final.callPackage mkCocNil { };
-          };
-        };
-      };
-    };
+      }
+    );
 }
