@@ -1,0 +1,8 @@
+feat(nix): Setup documentation, task environment, and external Rust package scaffold
+
+This commit introduces:
+- A Standard Operating Procedure (SOP) for applying the `nil` flake to other Rust projects (`docs/sops/sop_001_apply_nil_flake_to_rust_projects.md`).
+- A task-specific Nix development environment (`task/flake.nix`).
+- Utility scripts for running commands with logging (`scripts/run_and_log.sh`) and extracting Cargo.toml paths (`scripts/extract_cargo_tomls.sh`).
+- A virtual scaffold (`external_rust_packages/`) for building external Rust packages using Nix flakes, demonstrated with `nixpacks`, `rust-cargo-workspaces-glob`, `rust-cargo-workspaces-glob-binary`, `rust-cargo-workspaces-glob-library`, and `rust-cargo-workspaces`. This includes individual `flake.nix` files for each package and an aggregating `flake.nix`.
+- Updates to `GEMINI.md` and `task.md` to reflect the current task context and progress.

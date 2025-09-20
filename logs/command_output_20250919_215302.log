@@ -1,0 +1,6 @@
+Running command: 'nix develop external_rust_packages/nixpacks --command bash -c 'cargo clippy --all-targets -- -D warnings''
+Logging output to: 'logs/command_output_20250919_215302.log'
+---------------------------------------------------
+error: cannot find flake 'flake:external_rust_packages/nixpacks' in the flake registries
+---------------------------------------------------
+Command finished with exit code: 1

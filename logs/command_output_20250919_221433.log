@@ -1,0 +1,12 @@
+Running command: 'nix develop ./external_rust_packages#rust-cargo-workspaces-binary --command bash -c 'cargo clippy --all-targets -- -D warnings''
+Logging output to: 'logs/command_output_20250919_221433.log'
+---------------------------------------------------
+warning: Git tree '/data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil' is dirty
+warning: updating lock file '/data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil/external_rust_packages/flake.lock':
+• Updated input 'nixpacks':
+    'path:/nix/store/0dlzwlh79g83fip37az31diri06pl2j8-source/external_rust_packages/nixpacks?lastModified=1&narHash=sha256-wUIX6YqK/3luj/iVmQ645mqk5hgkU7feqEXEVaZ9UjQ%3D' (1970-01-01)
+  → 'path:/nix/store/chn5g873jjmql9wvpl4dr6mb3a5njm63-source/external_rust_packages/nixpacks?lastModified=1&narHash=sha256-wUIX6YqK/3luj/iVmQ645mqk5hgkU7feqEXEVaZ9UjQ%3D' (1970-01-01)
+warning: Git tree '/data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil' is dirty
+error: flake 'git+file:///data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil?dir=external_rust_packages' does not provide attribute 'devShells.aarch64-linux.rust-cargo-workspaces-binary', 'packages.aarch64-linux.rust-cargo-workspaces-binary', 'legacyPackages.aarch64-linux.rust-cargo-workspaces-binary' or 'rust-cargo-workspaces-binary'
+---------------------------------------------------
+Command finished with exit code: 1

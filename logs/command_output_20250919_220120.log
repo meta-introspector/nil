@@ -1,0 +1,19 @@
+Running command: 'nix develop ./external_rust_packages#rust-multiple-bins --command bash -c 'cargo test''
+Logging output to: 'logs/command_output_20250919_220120.log'
+---------------------------------------------------
+warning: Git tree '/data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil' is dirty
+fatal: ambiguous argument 'feature/CRQ-016-nixify-workflow': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+error:
+       … while updating the lock file of flake 'git+file:///data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil?dir=external_rust_packages'
+
+       … while updating the flake input 'nixpacks'
+
+       … while updating the flake input 'nixpacks/nixpacks-src'
+
+       … while fetching the input 'git+file:///data/data/com.termux.nix/files/home/pick-up-nix2/nixpacks?ref=feature/CRQ-016-nixify-workflow'
+
+       error: program 'git' failed with exit code 128
+---------------------------------------------------
+Command finished with exit code: 1

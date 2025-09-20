@@ -1,0 +1,36 @@
+Running command: 'nix develop ./external_rust_packages#nixpacks --command bash -c 'cargo test''
+Logging output to: 'logs/command_output_20250919_221532.log'
+---------------------------------------------------
+warning: Git tree '/data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil' is dirty
+warning: updating lock file '/data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil/external_rust_packages/flake.lock':
+• Updated input 'nixpacks':
+    'path:/nix/store/izrcajpg77qr69d2qqiwg37n1dxfb7cb-source/external_rust_packages/nixpacks?lastModified=1&narHash=sha256-wUIX6YqK/3luj/iVmQ645mqk5hgkU7feqEXEVaZ9UjQ%3D' (1970-01-01)
+  → 'path:/nix/store/dmkbxgzsnyl6f9idklw783470dj8mmqc-source/external_rust_packages/nixpacks?lastModified=1&narHash=sha256-wUIX6YqK/3luj/iVmQ645mqk5hgkU7feqEXEVaZ9UjQ%3D' (1970-01-01)
+warning: Git tree '/data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil' is dirty
+error:
+       … while calling the 'derivationStrict' builtin
+
+         at /builtin/derivation.nix:9:12: (source not available)
+
+       … while evaluating derivation 'nix-shell'
+         whose name attribute is located at /nix/store/lv9bmgm6v1wc3fiz00v29gi4rk13ja6l-source/pkgs/stdenv/generic/make-derivation.nix:333:7
+
+       … while evaluating attribute 'nativeBuildInputs' of derivation 'nix-shell'
+
+         at /nix/store/lv9bmgm6v1wc3fiz00v29gi4rk13ja6l-source/pkgs/stdenv/generic/make-derivation.nix:377:7:
+
+          376|       depsBuildBuild              = elemAt (elemAt dependencies 0) 0;
+          377|       nativeBuildInputs           = elemAt (elemAt dependencies 0) 1;
+             |       ^
+          378|       depsBuildTarget             = elemAt (elemAt dependencies 0) 2;
+
+       error: attribute 'packages' missing
+
+       at /nix/store/wp883ag7g4fwvsrfmdv6bv43nxhbi07f-source/flake.nix:53:22:
+
+           52|         devShells.default = pkgs.mkShell {
+           53|           packages = nilDevShell.packages ++ (with pkgs; [
+             |                      ^
+           54|             # Add any additional development tools specific to nixpacks here
+---------------------------------------------------
+Command finished with exit code: 1

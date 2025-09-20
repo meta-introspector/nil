@@ -1,0 +1,9 @@
+Running command: 'nix develop ./external_rust_packages#nixpacks --command bash -c 'cargo clippy --all-targets -- -D warnings''
+Logging output to: 'logs/command_output_20250919_221355.log'
+---------------------------------------------------
+warning: Git tree '/data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil' is dirty
+warning: creating lock file '/data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil/external_rust_packages/flake.lock'
+warning: Git tree '/data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil' is dirty
+error: flake 'git+file:///data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil?dir=external_rust_packages' does not provide attribute 'devShells.aarch64-linux.nixpacks', 'packages.aarch64-linux.nixpacks', 'legacyPackages.aarch64-linux.nixpacks' or 'nixpacks'
+---------------------------------------------------
+Command finished with exit code: 1

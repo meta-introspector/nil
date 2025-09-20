@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     flake-utils.url = "github:numtide/flake-utils";
+    nil.url = "path:../"; # Path to the nil flake
     nixpacks = { # Reference the nixpacks flake in the subdirectory
       url = "./nixpacks";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,18 +13,18 @@
     };
   };
 
-  outputs = { self, nixpkgs, flake-utils, nixpacks, ... }@inputs:
+  outputs = { self, nixpkgs, flake-utils, nil, nixpacks, ... }@inputs:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
       in
       {
         packages = {
-          inherit (nixpacks.packages.${system}) default;
+          nixpacks = nixpacks.packages.${system}.default;
         };
 
         devShells = {
-          inherit (nixpacks.devShells.${system}) default;
+          nixpacks = nixpacks.devShells.${system}.default;
         };
       }
     );

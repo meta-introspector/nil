@@ -1,0 +1,28 @@
+Running command: 'nix develop ./external_rust_packages#rust-custom-toolchain --command bash -c 'cargo test''
+Logging output to: 'logs/command_output_20250919_215949.log'
+---------------------------------------------------
+warning: Git tree '/data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil' is dirty
+error:
+       … while updating the lock file of flake 'git+file:///data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil?dir=external_rust_packages'
+
+       … while updating the flake input 'nil'
+
+       … while fetching the input 'path:../../'
+
+       error: relative path '../../' points outside of its parent's store path '/nix/store/az56r84qn6z8ak7dph327d1l81q2inha-source'
+---------------------------------------------------
+Command finished with exit code: 1
+Running command: 'nix develop ./external_rust_packages#rust-custom-version --command bash -c 'cargo clippy --all-targets -- -D warnings''
+Logging output to: 'logs/command_output_20250919_215949.log'
+---------------------------------------------------
+warning: Git tree '/data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil' is dirty
+error:
+       … while updating the lock file of flake 'git+file:///data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil?dir=external_rust_packages'
+
+       … while updating the flake input 'nil'
+
+       … while fetching the input 'path:../../'
+
+       error: relative path '../../' points outside of its parent's store path '/nix/store/az56r84qn6z8ak7dph327d1l81q2inha-source'
+---------------------------------------------------
+Command finished with exit code: 1

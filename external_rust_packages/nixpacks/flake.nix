@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     flake-utils.url = "github:numtide/flake-utils";
     nil.url = "path:../../"; # Path to the nil flake
-    nixpacks-src.url = "path:/data/data/com.termux.nix/files/home/pick-up-nix2/nixpacks"; # Path to the nixpacks source
+    nixpacks-src.url = "github:meta-introspector/nixpacks?ref=feature/CRQ-016-nixify-workflow"; # Path to the nixpacks source
   };
 
   outputs = { self, nixpkgs, flake-utils, nil, nixpacks-src, ... }@inputs:
@@ -50,7 +50,6 @@
         };
 
         devShells.default = pkgs.mkShell {
-          inherit (nilDevShell) packages;
           packages = nilDevShell.packages ++ (with pkgs; [
             # Add any additional development tools specific to nixpacks here
           ]);

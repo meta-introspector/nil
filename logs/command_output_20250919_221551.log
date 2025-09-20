@@ -1,0 +1,17 @@
+Running command: 'nix develop ./external_rust_packages#rust-cargo-workspaces-library --command bash -c 'cargo test''
+Logging output to: 'logs/command_output_20250919_221551.log'
+---------------------------------------------------
+warning: Git tree '/data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil' is dirty
+warning: updating lock file '/data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil/external_rust_packages/flake.lock':
+• Updated input 'nixpacks':
+    'path:/nix/store/fra5n09rswv4jbyyx0z4sc6vgm9s8q98-source/external_rust_packages/nixpacks?lastModified=1&narHash=sha256-wUIX6YqK/3luj/iVmQ645mqk5hgkU7feqEXEVaZ9UjQ%3D' (1970-01-01)
+  → 'path:/nix/store/1n13fy84xk4b4mks1dnrisp0gsjqljyy-source/external_rust_packages/nixpacks?lastModified=1&narHash=sha256-wUIX6YqK/3luj/iVmQ645mqk5hgkU7feqEXEVaZ9UjQ%3D' (1970-01-01)
+warning: Git tree '/data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil' is dirty
+error:
+       … while updating the lock file of flake 'git+file:///data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil?dir=external_rust_packages'
+
+       … while fetching the input 'git+file:///data/data/com.termux.nix/files/home/pick-up-nix2/vendor/nix/nil?dir=external_rust_packages'
+
+       error: opening lock file '/nix/store/49dj90vzg3bwriqf6g6rk5sk2m02db7s-source.lock': No space left on device
+---------------------------------------------------
+Command finished with exit code: 1
