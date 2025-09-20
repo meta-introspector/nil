@@ -38,15 +38,17 @@ This approach would involve executing `nix` commands but with a focus on utilizi
 
 The initial scope of this CRQ will focus on:
 
-*   **Nix Store Path Discovery**: Identifying and listing Nix store paths, particularly for Rust toolchains.
+*   **Nix Store Path Discovery**: Identifying and listing Nix store paths, particularly for Rust toolchains. This will involve programmatic discovery of `rustc` executables within the `/nix/store`.
 *   **Derivation Inspection**: Reading basic information about derivations (e.g., inputs, outputs).
 *   **Environment Composition**: Providing utilities to construct and activate Nix development shells programmatically.
+*   **Toolchain Testing**: Developing a mechanism to test the compilation and functionality of Rust projects against various discovered Rust toolchains.
 
 ## 5. Success Criteria
 
 *   A Rust library (e.g., `nix-interop` extension or a new crate) capable of querying Nix store paths and derivation information.
 *   A command-line interface (CLI) tool demonstrating the capabilities of the library, such as listing available Rust toolchains and their versions.
 *   Integration with existing `flake.nix` files to allow dynamic selection of Rust toolchains for `nil` and other Rust projects.
+*   A "battery of tests" script (or Rust equivalent) that can iterate through identified Rust toolchains and attempt to build/test a target Rust project, reporting success or failure.
 
 ## 6. Future Work
 
@@ -60,3 +62,28 @@ The initial scope of this CRQ will focus on:
 *   **Approach B (Enhanced Shelling Out)**: Medium (1-2 weeks for initial functionality).
 
 Further estimation will be provided after initial research into `libstore` FFI possibilities.
+
+## 8. Tasks and Todos
+
+### 8.1. Toolchain Discovery
+
+*   **Task**: Implement a Rust function to discover all `rustc` executables in the Nix store.
+    *   **Todo**: Refine the `find` command (or its Rust equivalent) to accurately locate `bin/rustc` within store paths.
+    *   **Todo**: Extract version information from the discovered `rustc` paths.
+*   **Task**: Integrate the `scripts/extract_suffixes.sh` (or a Rust equivalent) to identify file types and potentially filter relevant store paths.
+
+### 8.2. Test Harness Development
+
+*   **Task**: Create a Rust-based test harness that can:
+    *   Take a target Rust project (e.g., `nil`).
+    *   Accept a `rustc` executable path.
+    *   Attempt to build and test the project using the specified `rustc`.
+    *   Capture and report the build/test results (success/failure, output, errors).
+*   **Task**: Develop a mechanism to dynamically override the `rustc` used by a Rust project's `flake.nix` for testing purposes.
+
+### 8.3. Reporting and Analysis
+
+*   **Task**: Implement reporting functionality to summarize the results of the toolchain tests.
+    *   **Todo**: Clearly indicate which Rust toolchains successfully built the project and which failed.
+    *   **Todo**: Provide details on failures (e.g., compilation errors, test failures).
+*   **Task**: (Future) Develop a mechanism to "uninstall" (i.e., identify for removal) non-working toolchains, acknowledging that actual Nix store garbage collection is a separate process.

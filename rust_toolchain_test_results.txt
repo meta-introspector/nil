@@ -1,0 +1,20 @@
+Starting Rust toolchain compatibility tests for nil...
+-----------------------------------------------------
+Testing with Rust version: 1.77.2
+-----------------------------------
+FAILURE: nil failed to compile with Rust version 1.77.2
+
+Testing with Rust version: 1.86.0
+-----------------------------------
+FAILURE: nil failed to compile with Rust version 1.86.0
+
+Testing with Rust version: 1.89.0-nightly-2025-06-01
+-----------------------------------
+FAILURE: nil failed to compile with Rust version 1.89.0-nightly-2025-06-01
+
+Testing with Rust version: 1.92.0-nightly-2025-09-16
+-----------------------------------
+FAILURE: nil failed to compile with Rust version 1.92.0-nightly-2025-09-16
+
+-----------------------------------------------------
+All tests completed. Results saved to rust_toolchain_test_results.txt

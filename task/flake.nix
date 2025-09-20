@@ -2,8 +2,8 @@
   description = "A flake for the current task, providing a development shell.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-    flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs.url = "github:meta-introspector/nixpkgs-fork?ref=feature/CRQ-016-nixify";
+    flake-utils.url = "github:meta-introspector/flake-utils-fork?ref=feature/CRQ-016-nixify";
     # Reference the parent project's docs and scripts directories
     docs.url = "path:../../../../docs";
     scripts.url = "path:../../../../scripts";

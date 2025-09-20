@@ -1,0 +1,37 @@
+Scanning /data/data/com.termux.nix/files/home/pick-up-nix2/index/sizes.txt for Rust toolchain versions...
+-----------------------------------------------------
+Found Rust versions to test: rust_1_75_0 rust_1_77_2 rust_1_86_0 rust_1_87_0 rust_1_89_0 rust-nightly_nightly-2025-06-01 rust-nightly_nightly-2025-09-16
+
+Starting Rust toolchain compatibility tests for nil...
+-----------------------------------------------------
+Testing with Rust version: rust_1_75_0
+-----------------------------------
+FAILURE: nil failed to compile with Rust version rust_1_75_0
+
+Testing with Rust version: rust_1_77_2
+-----------------------------------
+FAILURE: nil failed to compile with Rust version rust_1_77_2
+
+Testing with Rust version: rust_1_86_0
+-----------------------------------
+FAILURE: nil failed to compile with Rust version rust_1_86_0
+
+Testing with Rust version: rust_1_87_0
+-----------------------------------
+FAILURE: nil failed to compile with Rust version rust_1_87_0
+
+Testing with Rust version: rust_1_89_0
+-----------------------------------
+FAILURE: nil failed to compile with Rust version rust_1_89_0
+
+Testing with Rust version: rust-nightly_nightly-2025-06-01
+-----------------------------------
+FAILURE: nil failed to compile with Rust version rust-nightly_nightly-2025-06-01
+
+Testing with Rust version: rust-nightly_nightly-2025-09-16
+-----------------------------------
+FAILURE: nil failed to compile with Rust version rust-nightly_nightly-2025-09-16
+
+-----------------------------------------------------
+All tests completed. Results saved to rust_toolchain_test_results_all.txt
+Running shellcheck on this script...

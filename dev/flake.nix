@@ -2,8 +2,8 @@
   description = "Development Environment for nil";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    rust-overlay.url = "github:oxalica/rust-overlay";
+    nixpkgs.url = "github:meta-introspector/nixpkgs-fork?ref=feature/CRQ-016-nixify";
+    rust-overlay.url = "github:meta-introspector/rust-overlay-fork?ref=feature/CRQ-016-nixify";
     rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -26,6 +26,12 @@
         let
           pkgs = nixpkgs.legacyPackages.${system};
           rustPkgs = rust-overlay.packages.${system};
+
+          # Function to get a specific rust toolchain
+          getRustToolchain = version:
+            rustPkgs."rust_${version}".override {
+              extensions = [ "rust-src" ];
+            };
 
         in
         rec {
@@ -78,9 +84,7 @@
                 let
                   vers = lib.splitVersion pkgs.rustc.version;
                 in
-                rustPkgs."rust_${lib.elemAt vers 0}_${lib.elemAt vers 1}_${lib.elemAt vers 2}".override {
-                  extensions = [ "rust-src" ];
-                }
+                getRustToolchain "${lib.elemAt vers 0}_${lib.elemAt vers 1}_${lib.elemAt vers 2}"
               )
             ];
           });
@@ -107,6 +111,23 @@
               export CARGO_TARGET_DIR=~/.cache/targets-syntax
             '';
           };
+
+          # New devShells for specific Rust versions
+          rustc1_77_2 = without-rust.overrideAttrs (old: {
+            nativeBuildInputs = old.nativeBuildInputs ++ [ (getRustToolchain "1.77.2") ];
+          });
+
+          rustc1_86_0 = without-rust.overrideAttrs (old: {
+            nativeBuildInputs = old.nativeBuildInputs ++ [ (getRustToolchain "1.86.0") ];
+          });
+
+          rustc1_89_0_nightly = without-rust.overrideAttrs (old: {
+            nativeBuildInputs = old.nativeBuildInputs ++ [ (getRustToolchain "1.89.0-nightly-2025-06-01") ];
+          });
+
+          rustc1_92_0_nightly = without-rust.overrideAttrs (old: {
+            nativeBuildInputs = old.nativeBuildInputs ++ [ (getRustToolchain "1.92.0-nightly-2025-09-16") ];
+          });
         }
       );
     };
