@@ -2,8 +2,8 @@
   description = "Nix flake for building the rust-cargo-workspaces-library Rust project using nil's environment.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-    flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs.url = "github:meta-introspector/nixpkgs?ref=feature/CRQ-016-nixify";
+    flake-utils.url = "github:meta-introspector/flake-utils?ref=feature/CRQ-016-nixify";
     nil.url = "path:../../"; # Path to the nil flake
     crate-src.url = "path:../../../nixpacks/examples/rust-cargo-workspaces/library"; # Path to the crate source
   };

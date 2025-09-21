@@ -2,8 +2,8 @@
   description = "Aggregating flake for external Rust packages.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-    flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs.url = "github:meta-introspector/nixpkgs?ref=feature/CRQ-016-nixify";
+    flake-utils.url = "github:meta-introspector/flake-utils?ref=feature/CRQ-016-nixify";
     nil.url = "path:../"; # Path to the nil flake
     nixpacks = { # Reference the nixpacks flake in the subdirectory
       url = "./nixpacks";

@@ -1,9 +1,9 @@
 {
   # Just for tests. No need to be up-to-date.
   inputs = {
-    nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixos-22-11.url = "github:NixOS/nixpkgs/nixos-22.11";
-    nixos-23-05.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixos-unstable.url = "github:meta-introspector/nixpkgs?ref=feature/CRQ-016-nixify";
+    nixos-22-11.url = "github:meta-introspector/nixpkgs?ref=feature/CRQ-016-nixify";
+    nixos-23-05.url = "github:meta-introspector/nixpkgs?ref=feature/CRQ-016-nixify";
   };
 
   outputs = inputs: { };

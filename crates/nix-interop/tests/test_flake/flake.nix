@@ -1,9 +1,9 @@
 {
   # Just for tests. No need to be up-to-date.
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/5ed481943351e9fd354aeb557679624224de38d5";
+  inputs.nixpkgs.url = "github:meta-introspector/nixpkgs?ref=feature/CRQ-016-nixify";
   inputs.nix = {
     flake = false;
-    url = "github:NixOS/nix/2.13.3";
+    url = "github:meta-introspector/nix?ref=feature/CRQ-016-nixify";
   };
   inputs.non-flake-file = {
     flake = false;
